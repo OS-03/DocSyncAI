@@ -1,0 +1,162 @@
+/* Theme variables (dark default) */
+:root {
+  --bg: #0b0710;
+  --panel: rgba(255,255,255,0.02);
+  --text-main: rgba(255,255,255,0.92);
+  --muted: rgba(255,255,255,0.6);
+  --brand: #b891ff;
+  --button-bg: #1a1a1a;
+  --button-text: #fff;
+  --nav-bg: transparent;
+
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+/* light theme overrides */
+:root[data-theme="light"] {
+  --bg: #f7fafc;
+  --panel: rgba(0,0,0,0.03);
+  --text-main: #0f172a;
+  --muted: rgba(0,0,0,0.55);
+  --brand: #6b46c1;
+  --button-bg: #ffffff;
+  --button-text: #0f172a;
+}
+
+/* dark theme overrides */
+:root[data-theme="dark"] {
+  --bg: #05020a;
+  --panel: rgba(255,255,255,0.02);
+  --text-main: rgba(255,255,255,0.92);
+  --muted: rgba(255,255,255,0.6);
+  --brand: #b891ff;
+  --button-bg: #1a1a1a;
+  --button-text: #fff;
+}
+
+/* apply variables to page (but do not override .top-nav colors) */
+html, body {
+  background-color: var(--bg);
+  color: var(--text-main);
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* utility classes that map to CSS variables (replace Tailwind slate usage) */
+.bg-panel { background-color: var(--panel); }
+.bg-panel-2 { background-color: rgba(0,0,0,0.06); }
+.text-main { color: var(--text-main); }
+.text-secondary { color: var(--text-main); opacity: 0.9; }
+.text-muted { color: var(--muted); }
+.border-muted { border-color: rgba(255,255,255,0.04); }
+.panel-rounded { border-radius: 12px; }
+.panel-p { padding: 1rem; }
+.panel-shadow { box-shadow: 0 8px 24px rgba(2,6,23,0.4); }
+
+/* ensure navbar keeps its bespoke style (do not change) */
+
+/* Top navigation baseline using theme variables */
+.top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 20px;
+  background: transparent;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.top-nav .brand-link {
+  font-weight: 700;
+  color: var(--brand);
+  text-decoration: none;
+}
+.nav-links .nav-link {
+  color: var(--muted);
+  text-decoration: none;
+  margin-right: 12px;
+}
+.nav-links .nav-link.active {
+  color: var(--brand);
+  font-weight: 600;
+}
+.nav-actions { display:flex; align-items:center; }
+
+.nav-actions .theme-toggle { margin-right: 8px; }
+.user-email { margin-right: 10px; color: var(--muted); font-size: 0.9rem; }
+
+/* small theme-toggle style */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  padding: 6px 10px;
+  background: transparent;
+  border: none;
+}
+
+/* make buttons follow theme variables across the app UI (not navbar) */
+button, .btn {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+/* small utility adjustments */
+.max-w-6xl { max-width: 72rem; margin-left: auto; margin-right: auto; }
+.max-w-5xl { max-width: 64rem; margin-left: auto; margin-right: auto; }
+
+.home-root.dark-theme,
+.compare-root.dark-theme,
+.reports-root.dark-theme {
+  background-color: #05020a;
+  color: #eaeaff;
+}
+
+.home-root.light-theme,
+.compare-root.light-theme,
+.reports-root.light-theme {
+  background-color: #f7fafc;
+  color: #22223b;
+}
+
+/* Light-mode overrides for common Tailwind 'slate' background/text classes used in components.
+   This helps keep existing markup while giving correct colors in light theme. */
+:root[data-theme="light"] .bg-slate-800 { background-color: #ffffff !important; }
+:root[data-theme="light"] .bg-slate-900 { background-color: #f1f5f9 !important; }
+:root[data-theme="light"] .bg-slate-700 { background-color: #ffffff !important; }
+:root[data-theme="light"] .text-slate-100 { color: var(--text-main) !important; }
+:root[data-theme="light"] .text-slate-200 { color: rgba(17,24,39,0.8) !important; }
+:root[data-theme="light"] .text-slate-300 { color: rgba(17,24,39,0.9) !important; }
+:root[data-theme="light"] .text-slate-400 { color: var(--muted) !important; }
+:root[data-theme="light"] .text-slate-300 { color: rgba(17,24,39,0.85) !important; }
+:root[data-theme="light"] .rounded-xl { border: 1px solid rgba(16,24,40,0.04); }
+
+/* Buttons in light theme */
+:root[data-theme="light"] .btn,
+:root[data-theme="light"] button { background-color: var(--button-bg); color: var(--button-text); border: 1px solid rgba(16,24,40,0.04); }
+
+/* border color overrides commonly used */
+:root[data-theme="light"] .border-slate-800 { border-color: rgba(15,23,42,0.06) !important; }
+:root[data-theme="light"] .shadow-lg { box-shadow: 0 6px 18px rgba(16,24,40,0.03) !important; }
+
+/* additional strong light-theme font/color fixes */
+:root[data-theme="light"] .text-white { color: var(--text-main) !important; }
+:root[data-theme="light"] .text-gray-100 { color: var(--text-main) !important; }
+:root[data-theme="light"] .text-gray-200 { color: rgba(17,24,39,0.85) !important; }
+:root[data-theme="light"] input,
+:root[data-theme="light"] textarea,
+:root[data-theme="light"] select { color: var(--text-main) !important; background-color: #fff !important; border-color: rgba(15,23,42,0.06) !important; }
+
+/* navbar border/color in light mode */
+:root[data-theme="light"] .top-nav { border-bottom-color: rgba(15,23,42,0.06) !important; }
+
+/* make sure code/prose blocks are readable in light */
+:root[data-theme="light"] .prose,
+:root[data-theme="light"] pre,
+:root[data-theme="light"] code { color: var(--text-main) !important; background: #f8fafc !important; }
+
+

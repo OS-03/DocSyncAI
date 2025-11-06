@@ -1,0 +1,111 @@
+/* === LOGIN PAGE STYLE (Scoped) === */
+.login-page {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top left, #0f0c29, #302b63, #24243e);
+  font-family: "Poppins", sans-serif;
+  color: #fff;
+}
+
+/* Centered Login Box */
+.login-page .login-container {
+  background: rgba(30, 30, 47, 0.85);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Header */
+.login-page .login-header .login-logo {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.login-page .login-header h1 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.login-page .highlight {
+  color: #8b8bff;
+}
+
+/* Buttons (scoped) */
+.login-page .btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* GitHub button */
+.login-page .github-btn {
+  background-color: #4c51bf;
+  color: white;
+}
+.login-page .github-btn:hover {
+  background-color: #434190;
+}
+
+/* Google button */
+.login-page .google-btn {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #ccc;
+}
+.login-page .google-btn:hover {
+  background-color: #f1f1f1;
+} 
+/* Email button */
+.login-page .email-btn {
+  background-color: #8b8bff;
+  color: white;
+}
+.login-page .email-btn:hover {
+  background-color: #7b7bff;
+}
+
+/* Input fields */
+.login-page .login-form input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: none;
+  background: #2a2a3b;
+  color: white;
+  font-size: 0.9rem;
+}
+.login-page .login-form input:focus {
+  outline: 2px solid #8b8bff;
+}
+
+/* Signup link */
+.login-page .signup-text {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #bbb;
+}
+.login-page .signup-link {
+  color: #8b8bff;
+  text-decoration: none;
+}
+.login-page .signup-link:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,232 @@
+/* src/App.css */
+
+/* --- Global & Reset Styles (Good practice) --- */
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden; /* Prevent horizontal scroll from background elements */
+  font-family: 'Inter', sans-serif; /* A modern font, you can import from Google Fonts */
+  color: #E0E0E0; /* Light gray for general text */
+}
+
+/* You might want to import a font here from Google Fonts, e.g.: */
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap'); */
+
+
+/* --- Hero Section Styles --- */
+.landing-page-hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  
+  /* Deep dark purple background with a subtle radial gradient */
+  background: radial-gradient(circle at 50% 10%, #1a013a 0%, #000000 100%);
+  position: relative; /* For positioning background elements */
+  overflow: hidden; /* Ensure background elements don't spill over */
+}
+
+.content-container {
+  z-index: 10; /* Make sure content is above background elements */
+  max-width: 800px;
+  margin-top: -50px; /* Adjust if needed to center vertically better */
+}
+
+.hero-title {
+  font-size: clamp(3rem, 8vw, 6rem); /* Responsive font size */
+  font-weight: 900;
+  margin-bottom: 20px;
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
+
+.purple-gradient {
+  /* Text with a gradient fill and glow */
+  background: linear-gradient(90deg, #A855F7 0%, #E879F9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  text-shadow: 0 0 15px rgba(170, 0, 255, 0.6), 0 0 30px rgba(170, 0, 255, 0.4);
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.5rem); /* Responsive font size */
+  font-weight: 300;
+  margin-bottom: 40px;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  color: #B0B0B0; /* Slightly lighter gray */
+}
+
+/* --- Button Styles --- */
+.get-started-button {
+  display: inline-flex; /* Allows text and arrow to sit nicely */
+  align-items: center;
+  padding: 15px 35px;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 600;
+  border-radius: 50px; /* Pill shape */
+  border: none;
+  cursor: pointer;
+  background-color: #7B24A6; /* A rich purple */
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 15px rgba(123, 36, 166, 0.4); /* Subtle shadow */
+}
+
+.get-started-button:hover {
+  background-color: #9234C0; /* Lighter purple on hover */
+  transform: translateY(-3px); /* Slight lift effect */
+  box-shadow: 0 8px 20px rgba(123, 36, 166, 0.6);
+}
+
+.get-started-button .arrow {
+  margin-left: 10px;
+  font-size: 1.4em; /* Make arrow slightly larger */
+  line-height: 1; /* Center vertically */
+  transition: transform 0.2s ease-out;
+}
+
+.get-started-button:hover .arrow {
+  transform: translateX(5px); /* Arrow moves on hover */
+}
+
+
+/* --- Background Spheres (Abstract shapes) --- */
+.bg-sphere {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(170, 0, 255, 0.1); /* Translucent purple */
+  filter: blur(80px); /* Soft glow */
+  animation: floatEffect 15s infinite ease-in-out alternate;
+  pointer-events: none; /* Allows clicks to pass through to content */
+}
+
+.sphere-one {
+  width: 300px;
+  height: 300px;
+  top: 10%;
+  left: 15%;
+  background: rgba(100, 0, 150, 0.15); /* Slightly different shade */
+  animation-duration: 18s;
+  animation-delay: 0s;
+}
+
+.sphere-two {
+  width: 400px;
+  height: 400px;
+  bottom: 5%;
+  right: 10%;
+  background: rgba(200, 0, 255, 0.1);
+  animation-duration: 20s;
+  animation-delay: 2s;
+}
+
+.sphere-three {
+  width: 250px;
+  height: 250px;
+  top: 60%;
+  left: -5%;
+  background: rgba(150, 0, 200, 0.1);
+  animation-duration: 16s;
+  animation-delay: 4s;
+}
+
+.bg-img {
+  position: fixed;        /* Fixed behind all content */
+  top: 0;
+  left: 0;
+  width: 100vw;           /* Full viewport width */
+  height: 100vh;          /* Full viewport height */
+  object-fit: cover;      /* Cover entire area without stretching */
+  z-index: -1;            /* Behind all spheres and content */
+  pointer-events: none;   /* Clicks pass through */
+  filter: saturate(1) blur(0.5px); /* Slight blur, optional */
+  opacity: 1;             /* Fully visible */
+
+  /* Drift animation */
+  animation: driftAndRotate 30s infinite ease-in-out alternate;
+}
+
+@keyframes driftAndRotate {
+  0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  25% { transform: translate(10px, 5px) rotate(1deg) scale(1.02); }
+  50% { transform: translate(-10px, 10px) rotate(-1deg) scale(1.01); }
+  75% { transform: translate(5px, -5px) rotate(1deg) scale(1.03); }
+  100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+}
+
+
+/* --- Background Particles (Subtle dots) --- */
+.bg-particle {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: fadeAndMove 20s infinite ease-in-out alternate;
+  pointer-events: none;
+}
+
+.particle-one {
+  width: 8px; height: 8px;
+  top: 25%; left: 80%;
+  animation-delay: 1s;
+  animation-duration: 22s;
+}
+.particle-two {
+  width: 6px; height: 6px;
+  bottom: 20%; left: 15%;
+  animation-delay: 5s;
+  animation-duration: 18s;
+}
+.particle-three {
+  width: 10px; height: 10px;
+  top: 50%; right: 5%;
+  animation-delay: 3s;
+  animation-duration: 25s;
+}
+
+
+/* --- Keyframe Animations --- */
+@keyframes floatEffect {
+  0% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+  25% { transform: translate(-20px, 30px) scale(1.05); opacity: 0.8; }
+  50% { transform: translate(20px, -20px) scale(0.95); opacity: 0.7; }
+  75% { transform: translate(-15px, 25px) scale(1.02); opacity: 0.8; }
+  100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+}
+
+@keyframes fadeAndMove {
+  0% { transform: translateY(0px) scale(1); opacity: 0.3; }
+  50% { transform: translateY(-20px) scale(1.2); opacity: 0.6; }
+  100% { transform: translateY(0px) scale(1); opacity: 0.3; }
+}
+
+/* --- Responsive Adjustments (Optional but Recommended) --- */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+  }
+  .hero-subtitle {
+    font-size: clamp(0.9rem, 3vw, 1.2rem);
+    margin-bottom: 30px;
+  }
+  .get-started-button {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+  /* Smaller spheres for mobile */
+  .sphere-one, .sphere-two, .sphere-three {
+    width: 150px;
+    height: 150px;
+    filter: blur(50px);
+  }
+}
